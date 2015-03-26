@@ -67,6 +67,29 @@
     progressLayer.lineWidth = mlineWidth;
     progressLayer.zPosition = 1;
     progressLayer.path = progressPath.CGPath;
+
+}
+
+- (void)setPrecent:(CGFloat)precent withAnimationDuration:(CGFloat)duration{
+
+    _precent = precent;
+    
+    float endAngle = misClockWise ? (-90 + _precent * 360) : (-90 - precent*360);
+    UIBezierPath *progressPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetWidth(self.frame)/2.0f, CGRectGetHeight(self.frame)/2.0f) radius:(CGRectGetHeight(self.frame) /2.0f) - mlineWidth/2.0f startAngle:DEGREES_TO_RADIANS(-90.0f) endAngle:DEGREES_TO_RADIANS(endAngle) clockwise:misClockWise];
+    progressLayer.lineCap = kCALineCapRound;
+    progressLayer.fillColor = [UIColor clearColor].CGColor;
+    progressLayer.strokeColor = [UIColor redColor].CGColor;
+    progressLayer.lineWidth = mlineWidth;
+    progressLayer.zPosition = 1;
+    progressLayer.path = progressPath.CGPath;
+    
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.duration = 1;
+    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    pathAnimation.fromValue = @0.0f;
+    pathAnimation.toValue = @(precent);
+    [progressLayer addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
+    progressLayer.strokeEnd   = precent;
 }
 
 /*

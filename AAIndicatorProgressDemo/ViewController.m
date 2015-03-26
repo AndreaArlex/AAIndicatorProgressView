@@ -20,8 +20,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     AAIndicatorProgressView *progressView = [[AAIndicatorProgressView alloc] initWithFrame:CGRectMake(0, 0, 100, 100) backColor:[UIColor grayColor] progressColor:[UIColor blueColor] lineWidth:10 isClockWise:NO];
-    progressView.precent = 0.6;
-    progressView.precentLabel.text = @"60%";
+    [progressView setPrecent:0.8 withAnimationDuration:0.3];
+    progressView.precentLabel.text = @"80%";
     [self.view addSubview:progressView];
     
     progressView.translatesAutoresizingMaskIntoConstraints = NO;

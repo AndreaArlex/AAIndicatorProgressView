@@ -21,4 +21,12 @@
 @property (nonatomic, assign) float precent;
 @property (readonly, nonatomic, strong) UILabel *precentLabel;
 
+/**
+ *  设置进度
+ *
+ *  @param precent  进度
+ *  @param duration 动画时间
+ */
+- (void)setPrecent:(CGFloat)precent withAnimationDuration:(CGFloat)duration;
+
 @end
